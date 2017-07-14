@@ -41,8 +41,14 @@ class TrendingStocksGem::CLI
 				puts "More info on stock 10"
 			when input = "list"
 				list_stocks
+			when input = "exit"
+				sign_off
 			end
 		end
+	end
+
+	def sign_off
+		puts "Session completed."
 	end
 
 end
