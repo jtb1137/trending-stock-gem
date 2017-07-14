@@ -1,10 +1,10 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'trending_stock_gem/version'
+require 'trending-stocks-gem/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "trending_stocks_gem"
+  spec.name          = "trending-stocks-gem"
   spec.version       = TrendingStocksGem::VERSION
   spec.authors       = ["jtb1137"]
   spec.email         = ["jtb1137@gmail.com"]
