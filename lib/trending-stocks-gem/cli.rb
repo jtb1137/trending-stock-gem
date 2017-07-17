@@ -1,17 +1,17 @@
 class TrendingStocksGem::CLI
 	
 	def call
+		#TrendingStocksGem::Scraper ??????
 		puts "Today's Trending Stocks"
 		list_stocks
 		menu
+		exit
 	end
 
 	def list_stocks
-		@stocks = TrendingStocksGem::Stock.current
-		@stocks.each.with_index(1) do |stock, i|
-			puts "#{i}. #{stock.name} - Last: #{stock.last} - High: #{stock.high} - Low: #{stock.low}"
-		end
-	end		
+		puts "1. AMD - Last: 58.71 - Low: 56.03 - High: 59.42"
+		puts "2. Apple - Last: - Low - High"
+	end
 
 	def menu
 		input = nil
@@ -22,18 +22,29 @@ class TrendingStocksGem::CLI
 			
 			input = gets.strip.downcase
 			if input.to_i > 0
-				this_stock = @stocks[input.to_i - 1]
-				puts "#{this_stock.name} - Last: #{this_stock.last} - High: #{this_stock.high} - Low: #{this_stock.low}"
+				print_stock
 			elsif input == "list"
 				list_stocks
 			elsif input == "exit"
-				sign_off
+				exit
 			end
 		end
 	end
 
-	def sign_off
-		puts "Session completed."
+	def print_stock(stock)
+		puts ""
+		puts "----------- #{stock.name} -----------"
+		puts ""
+		puts "Last:           #{stock.location}"
+		puts "Low:            #{stock.head_chef}"
+		puts "High:           #{stock.contact}"
+		puts "Change:         #{stock.change}"
+		puts "Change %:       #{stock.change_percent}" 
+		puts "Trade Volume:   #{stock.volume}"
+	end
+
+	def exit
+		puts "Session complete."
 	end
 
 end
