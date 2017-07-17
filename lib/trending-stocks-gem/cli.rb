@@ -9,8 +9,10 @@ class TrendingStocksGem::CLI
 	end
 
 	def list_stocks
-		puts "1. AMD - Last: 58.71 - Low: 56.03 - High: 59.42"
-		puts "2. Apple - Last: - Low - High"
+		@stocks = TrendingStocksGem::Stock.current
+		@stocks.each.with_index(1) do |stock, i|
+			puts "#{i}. #{stock.name} - Last: #{stock.last} - High: #{stock.high} - Low: #{stock.low}"
+		end
 	end
 
 	def menu
@@ -22,6 +24,7 @@ class TrendingStocksGem::CLI
 			
 			input = gets.strip.downcase
 			if input.to_i > 0
+				this_stock = @stocks[input.to_i - 1]
 				print_stock
 			elsif input == "list"
 				list_stocks
@@ -31,16 +34,16 @@ class TrendingStocksGem::CLI
 		end
 	end
 
-	def print_stock(stock)
+	def print_stock(this_stock)
 		puts ""
-		puts "----------- #{stock.name} -----------"
+		puts "----------- #{this_stock.name} -----------"
 		puts ""
-		puts "Last:           #{stock.location}"
-		puts "Low:            #{stock.head_chef}"
-		puts "High:           #{stock.contact}"
-		puts "Change:         #{stock.change}"
-		puts "Change %:       #{stock.change_percent}" 
-		puts "Trade Volume:   #{stock.volume}"
+		puts "Last:           #{this_stock.location}"
+		puts "Low:            #{this_stock.head_chef}"
+		puts "High:           #{this_stock.contact}"
+		puts "Change:         #{this_stock.change}"
+		puts "Change %:       #{this_stock.change_percent}" 
+		puts "Trade Volume:   #{this_stock.volume}"
 	end
 
 	def exit
