@@ -1,7 +1,7 @@
 class TrendingStocksGem::CLI
 	
 	def call
-		puts "Today's Trending Stocks"
+		puts "----------- Today's Trending Stocks -----------"
 		list_stocks
 		menu
 		exit
@@ -42,9 +42,9 @@ class TrendingStocksGem::CLI
 		puts "Last:           #{@this_stock.last}"
 		puts "Low:            #{@this_stock.low}"
 		puts "High:           #{@this_stock.high}"
-		#puts "Change:         #{@this_stock.change}"
-		#puts "Change %:       #{@this_stock.change_percent}" 
-		#puts "Trade Volume:   #{@this_stock.volume}"
+		puts "Change:         #{@this_stock.change}"
+		puts "Change %:       #{@this_stock.change_percent}" 
+		puts "Trade Volume:   #{@this_stock.volume}"
 		puts ""
 	end
 

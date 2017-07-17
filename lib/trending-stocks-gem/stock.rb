@@ -1,6 +1,6 @@
 class TrendingStocksGem::Stock
 
-	attr_accessor :name, :last, :high, :low
+	attr_accessor :name, :last, :high, :low, :change, :change_percent, :volume
 
 	def self.current
 		self.scrape_stocks
@@ -31,6 +31,9 @@ class TrendingStocksGem::Stock
 		stock.last = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(1) > td:nth-child(3)").text
 		stock.high = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(1) > td:nth-child(4)").text
 		stock.low = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(1) > td:nth-child(5)").text
+		stock.change = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(1) > td:nth-child(6)").text
+		stock.change_percent = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(1) > td:nth-child(7)").text
+		stock.volume = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(1) > td:nth-child(8)").text
 		stocks << stock
 
 		stock = self.new
@@ -38,6 +41,9 @@ class TrendingStocksGem::Stock
 		stock.last = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(2) > td:nth-child(3)").text
 		stock.high = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(2) > td:nth-child(4)").text
 		stock.low = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(2) > td:nth-child(5)").text
+		stock.change = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(2) > td:nth-child(6)").text
+		stock.change_percent = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(2) > td:nth-child(7)").text
+		stock.volume = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(2) > td:nth-child(8)").text
 		stocks << stock
 		
 		stock = self.new
@@ -45,6 +51,9 @@ class TrendingStocksGem::Stock
 		stock.last = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(3) > td:nth-child(3)").text
 		stock.high = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(3) > td:nth-child(4)").text
 		stock.low = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(3) > td:nth-child(5)").text
+		stock.change = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(3) > td:nth-child(6)").text
+		stock.change_percent = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(3) > td:nth-child(7)").text
+		stock.volume = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(3) > td:nth-child(8)").text
 		stocks << stock
 		
 		stock = self.new
@@ -52,6 +61,9 @@ class TrendingStocksGem::Stock
 		stock.last = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(4) > td:nth-child(3)").text
 		stock.high = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(4) > td:nth-child(4)").text
 		stock.low = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(4) > td:nth-child(5)").text
+		stock.change = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(4) > td:nth-child(6)").text
+		stock.change_percent = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(4) > td:nth-child(7)").text
+		stock.volume = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(4) > td:nth-child(8)").text
 		stocks << stock
 
 		stock = self.new
@@ -59,6 +71,9 @@ class TrendingStocksGem::Stock
 		stock.last = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(5) > td:nth-child(3)").text
 		stock.high = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(5) > td:nth-child(4)").text
 		stock.low = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(5) > td:nth-child(5)").text
+		stock.change = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(5) > td:nth-child(6)").text
+		stock.change_percent = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(5) > td:nth-child(7)").text
+		stock.volume = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(5) > td:nth-child(8)").text
 		stocks << stock
 
 		stock = self.new
@@ -66,6 +81,9 @@ class TrendingStocksGem::Stock
 		stock.last = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(6) > td:nth-child(3)").text
 		stock.high = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(6) > td:nth-child(4)").text
 		stock.low = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(6) > td:nth-child(5)").text
+		stock.change = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(6) > td:nth-child(6)").text
+		stock.change_percent = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(6) > td:nth-child(7)").text
+		stock.volume = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(6) > td:nth-child(8)").text
 		stocks << stock
 
 		stock = self.new
@@ -73,6 +91,9 @@ class TrendingStocksGem::Stock
 		stock.last = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(7) > td:nth-child(3)").text
 		stock.high = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(7) > td:nth-child(4)").text
 		stock.low = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(7) > td:nth-child(5)").text
+		stock.change = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(7) > td:nth-child(6)").text
+		stock.change_percent = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(7) > td:nth-child(7)").text
+		stock.volume = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(7) > td:nth-child(8)").text
 		stocks << stock
 
 		stock = self.new
@@ -80,6 +101,9 @@ class TrendingStocksGem::Stock
 		stock.last = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(8) > td:nth-child(3)").text
 		stock.high = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(8) > td:nth-child(4)").text
 		stock.low = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(8) > td:nth-child(5)").text
+		stock.change = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(8) > td:nth-child(6)").text
+		stock.change_percent = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(8) > td:nth-child(7)").text
+		stock.volume = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(8) > td:nth-child(8)").text
 		stocks << stock
 
 		stock = self.new
@@ -87,6 +111,9 @@ class TrendingStocksGem::Stock
 		stock.last = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(9) > td:nth-child(3)").text
 		stock.high = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(9) > td:nth-child(4)").text
 		stock.low = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(9) > td:nth-child(5)").text
+		stock.change = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(9) > td:nth-child(6)").text
+		stock.change_percent = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(9) > td:nth-child(7)").text
+		stock.volume = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(9) > td:nth-child(8)").text
 		stocks << stock
 
 		stock = self.new
@@ -94,6 +121,9 @@ class TrendingStocksGem::Stock
 		stock.last = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(10) > td:nth-child(3)").text
 		stock.high = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(10) > td:nth-child(4)").text
 		stock.low = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(10) > td:nth-child(5)").text
+		stock.change = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(10) > td:nth-child(6)").text
+		stock.change_percent = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(10) > td:nth-child(7)").text
+		stock.volume = doc.search("#trendingInnerContent > table > tbody > tr:nth-child(10) > td:nth-child(8)").text
 		stocks << stock
 	end
 
