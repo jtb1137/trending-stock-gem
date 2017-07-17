@@ -24,7 +24,7 @@ class TrendingStocksGem::CLI
 			
 			input = gets.strip.downcase
 			if input.to_i > 0
-				this_stock = @stocks[input.to_i - 1]
+				@this_stock = @stocks[input.to_i - 1]
 				print_stock
 			elsif input == "list"
 				list_stocks
@@ -34,16 +34,17 @@ class TrendingStocksGem::CLI
 		end
 	end
 
-	def print_stock(this_stock)
+	def print_stock
 		puts ""
-		puts "----------- #{this_stock.name} -----------"
+		puts "----------- #{@this_stock.name} -----------"
 		puts ""
-		puts "Last:           #{this_stock.location}"
-		puts "Low:            #{this_stock.head_chef}"
-		puts "High:           #{this_stock.contact}"
-		puts "Change:         #{this_stock.change}"
-		puts "Change %:       #{this_stock.change_percent}" 
-		puts "Trade Volume:   #{this_stock.volume}"
+		puts "Last:           #{@this_stock.last}"
+		puts "Low:            #{@this_stock.low}"
+		puts "High:           #{@this_stock.high}"
+		#puts "Change:         #{@this_stock.change}"
+		#puts "Change %:       #{@this_stock.change_percent}" 
+		#puts "Trade Volume:   #{@this_stock.volume}"
+		puts ""
 	end
 
 	def exit
