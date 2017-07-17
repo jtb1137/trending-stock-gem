@@ -8,6 +8,7 @@ class TrendingStocksGem::CLI
 	end
 
 	def list_stocks
+		puts ""
 		@stocks = TrendingStocksGem::Stock.current
 		@stocks.each.with_index(1) do |stock, i|
 			puts "#{i}. #{stock.name} - Last: #{stock.last} - High: #{stock.high} - Low: #{stock.low}"
@@ -17,6 +18,7 @@ class TrendingStocksGem::CLI
 	def menu
 		input = nil
 		while input != 'exit'
+			puts ""
 			puts "Type 'exit' to quit at any time."
 			puts "Type 'list' to view the list of stocks."
 			puts "Enter the number of the stock you would like to know more about:"
