@@ -1,7 +1,6 @@
 class TrendingStocksGem::CLI
 	
 	def call
-		#TrendingStocksGem::Scraper ??????
 		puts "Today's Trending Stocks"
 		list_stocks
 		menu
