@@ -1,55 +1,58 @@
 class TrendingStocksGem::CLI
 	
 	def call
-		puts "----------- Today's Trending Stocks -----------"
-		list_stocks
-		menu
-		exit
-	end
-
-	def list_stocks
+		TrendingStocksGem::Scraper.new.build_stocks
 		puts ""
-		@stocks = TrendingStocksGem::Stock.current
-		@stocks.each.with_index(1) do |stock, i|
-			puts "#{i}. #{stock.name} - Last: #{stock.last} - High: #{stock.high} - Low: #{stock.low}"
-		end
+		puts "----------- TODAYS TRENDING STOCKS -----------"
+		puts ""
+		menu
 	end
 
 	def menu
-		input = nil
-		while input != 'exit'
-			puts ""
-			puts "Type 'exit' to quit at any time."
-			puts "Type 'list' to view the list of stocks."
-			puts "Enter the number of the stock you would like to know more about:"
-			
-			input = gets.strip.downcase
-			if input.to_i > 0
-				@this_stock = @stocks[input.to_i - 1]
-				print_stock
-			elsif input == "list"
-				list_stocks
-			elsif input == "exit"
-				exit
-			end
+		list_stocks
+		puts ""
+		puts "Which stock would you like to know more about?"
+		input = gets.strip
+		
+		stock = TrendingStocksGem::Stock.find(input)
+		display_stock_info(stock)
+
+		puts ""
+		puts 'To return to the list of stocks, type "list"'
+		puts 'To exit, type "exit"' 
+
+		input = input.strip.downcase
+		if input == "list"
+			menu
+		else
+			exit
 		end
 	end
 
-	def print_stock
-		puts ""
-		puts "----------- #{@this_stock.name} -----------"
-		puts ""
-		puts "Last:           #{@this_stock.last}"
-		puts "Low:            #{@this_stock.low}"
-		puts "High:           #{@this_stock.high}"
-		puts "Change:         #{@this_stock.change}"
-		puts "Change %:       #{@this_stock.change_percent}" 
-		puts "Trade Volume:   #{@this_stock.volume}"
-		puts ""
-	end
+	def list_stocks
+		TrendingStocksGem::Stock.all.each.with_index(1) do |stock, i|
+      		puts "#{i}. #{stock.name} - Last: #{stock.last} - Change: #{stock.change}"
+    	end
+  	end
 
-	def exit
-		puts "Session complete."
-	end
+	def display_stock_info(stock)
+		puts ""
+	    puts "----------- #{stock.name} -----------"
+	    puts ""
+	    puts "Last:           #{stock.last}"
+	    puts "High:           #{stock.high}"
+	    puts "Low:            #{stock.low}"
+	    puts "Change:         #{stock.change}"
+	    puts "Change %:       #{stock.change_percent}" 
+	    puts "Trade Volume:   #{stock.volume}"
+	    puts ""
+	    #puts "Market Cap:     #{@this_stock.market_cap}"
+	    #puts "ROI:         #{@this_stock.roi}"       
+	    #puts "Beta:           #{@this_stock.beta}" 
+	    #puts "----------- Technical Analysis -----------"
+	    #puts "Hourly:         #{}"
+	    #puts "Daily:          #{}"
+	    #puts "Monthly:        #{}"
+  	end
 
 end
